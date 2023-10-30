@@ -88,39 +88,55 @@ class MyTestCase(unittest.TestCase):
         
         pass
 
-    def test_14_primes(self):
+    def test_14_primes_numbers(self):
+        ''' This test test whether our function returns only
+            prime numbers only
+        '''
         # Test Case for prime numbers
-        self.assertTrue(draw_triangle_prime(2))
-        self.assertTrue(draw_triangle_prime(47))
-        self.assertTrue(draw_triangle_prime(193))
+        self.assertTrue(is_prime(2))
+        self.assertTrue(is_prime(47))
+        self.assertTrue(is_prime(193))
 
         # Test Case for non-prime numbers
-        self.assertFalse(draw_triangle_prime(1))
-        self.assertFalse(draw_triangle_prime(60))
-        self.assertFalse(draw_triangle_prime(200))
+        self.assertFalse(is_prime(1))
+        self.assertFalse(is_prime(60))
+        self.assertFalse(is_prime(200))
         
         
     @patch('sys.stdout', new_callable=StringIO)
     def test_15_prime(self, mock_stdout):
+        ''' This tests tests whether our function prints out a
+            right angled triangle'''
+
         draw_triangle_prime(3)
         output = mock_stdout.getvalue()
         expected_output = "2 \n3 5 \n7 11 13 \n"
         self.assertEqual(output, expected_output)
         
-    def test_tower_of_hanoi_1(self):
-        pass
+    def test_tower_of_hanoi_3_disks(self):
+        """
+        *This function tests how the rings move from one pole to the next.
+        it uses an instance of n=3 to check if the poles are ordered from biggest pole to
+        smallest pole. 
+        """
+        n = 3
+        source_peg = "A"
+        auxiliary_peg = "B"
+        target_peg = "C"
 
-    def test_tower_of_hanoi_2(self):
-        pass
+        moves = tower_of_hanoi(n, source_peg, auxiliary_peg, target_peg)
 
-    def test_tower_of_hanoi_3(self):
-        pass
-    def test_tower_of_hanoi_4(self):
-        pass
+        expected_moves = [
+            ("A", "C"),
+            ("A", "B"),
+            ("C", "B"),
+            ("A", "C"),
+            ("B", "A"),
+            ("B", "C"),
+            ("A", "C"),
+        ]
 
-    def test_tower_of_hanoi_5(self):
-        pass
-
+        self.assertEqual(moves, expected_moves) 
         
     
 if __name__ == '__main__':

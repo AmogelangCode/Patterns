@@ -1,8 +1,12 @@
-# Problems - Hangman Loops
+# GROUP PROJECT (PATTERNS)
 
-* Modify `patterns.py` to solve the problem as stated in [_TODO_ ref to content's problem description].
-* You can run the program using the instructions in *To Run* below.
-* You can test technical correctness by running the unit tests as in the section *To Test* below.
+
+* A group project that works on each individuals skills of drawing patterns and shapes using python.
+* This project also cements the concepts of TDD .
+
+to be continued....
+
+
 
 ### To Run
 

@@ -2,7 +2,7 @@
 # TODO: Step 1 - return shape from user input (it can't be blank and must be a valid shape!)     
 def get_shape():
     while True:
-        valid_shapes = ["triangle", "square", "pyramid"]
+        valid_shapes = ["triangle", "square", "pyramid", "triangle_multiplication", "triangle_prime", "triangle_reversed", "tower of hanoi"]
         shape = input("Shape: ").strip().lower()
 
         if shape not in valid_shapes:
@@ -64,31 +64,28 @@ def draw_triangle_multiplication(height):
         print()
 
 def draw_pyramid(height):
-    pass
+    '''args:
+    height
+    
+    return a 2d shape of a pyramid using asterisks'''
 
+
+    k = height-1
+    for y in range(1,height*2,2):
+        print(" "*k+"*"*y)
+        k-=1
+
+    
+
+def is_prime(height):
+    if height < 2:
+        return False
+    for i in range(2, int(height**0.5) + 1):
+        if height % i == 0:
+            return False
+    return is_prime(height)
 
 def draw_triangle_prime(height):
-    """ 
-    A prime number is a natural number greater than 1 that has no positive divisors other than 1 and itself.
-    In Python, prime numbers are essential in various mathematical and computational applications. They play a
-    fundamental role in number theory, cryptography, and data security.
-
-    Prime numbers are characterized by the following properties:
-    1. They are integers greater than 1.
-    2. They have exactly two positive divisors: 1 and the number itself.
-    3. They cannot be divided evenly by any other positive integer except 1 and itself.
-
-    For example, some prime numbers are 2, 3, 5, 7, 11, 13, 17, and so on. Non-prime numbers are called composite
-    numbers and have more than two positive divisors.
-    
-"""
-    def is_prime(height):
-        if height < 2:
-            return False
-        for i in range(2, int(height**0.5) + 1):
-            if height % i == 0:
-                return False
-        return True
     current = 2  # Starting number
 
     for i in range(1, height + 1):
@@ -100,15 +97,30 @@ def draw_triangle_prime(height):
             current += 1
         print()
 
-
-
-    return is_prime(height)
-         
                 
 # TODO: Step 4 - add support for other shapes
 def draw(shape, height):
+
     if shape == "pyramid":
         draw_pyramid(height)
+
+    elif shape == "square":
+        draw_square(height)
+
+    elif shape == "triangle":
+        draw_triangle(height)
+
+    elif shape == "triangle_multiplication":
+        draw_triangle_multiplication(height)
+
+    elif shape == "triangle_prime":
+        draw_triangle_prime(height)
+
+    elif shape == "triangle_reversed":
+        draw_triangle_reversed(height)
+
+    # elif shape == "tower of hanoi":
+    #     draw_tower_of_hanoi(n, source, auxiliary, target)
 
 
 
@@ -130,10 +142,25 @@ def tower_of_hanoi(n, source, auxiliary, target):
     >>> tower_of_hanoi(3, 'A', 'B', 'C')
     [('A', 'C'), ('A', 'B'), ('C', 'B'), ('A', 'C'), ('B', 'A'), ('B', 'C'), ('A', 'C')]
     """
-    return ""
+    if n == 1:
+        # Base case: If there's only one disk, move it from the source to the target peg.
+        return [(source, target)]
+    else:
+        # Recursive case:
+        # 1. Move n-1 disks from the source peg to the auxiliary peg using the target peg.
+        # 2. Move the largest disk from the source peg to the target peg.
+        # 3. Move the n-1 disks from the auxiliary peg to the target peg using the source peg.
+        # Combine all the moves and return them as a list.
+        moves = []
+        moves += tower_of_hanoi(n - 1, source, target, auxiliary)  # Step 1
+        moves.append((source, target))  # Step 2
+        moves += tower_of_hanoi(n - 1, auxiliary, source, target)  # Step 3
+        return moves
+    
 
 
 if __name__ == "__main__":
     shape_param = get_shape()
     height_param = get_height()
     draw(shape_param, height_param)
+    

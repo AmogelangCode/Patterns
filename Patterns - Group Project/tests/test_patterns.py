@@ -7,7 +7,7 @@ from patterns import *
 class MyTestCase(unittest.TestCase):
 
     def test_1_shape(self):
-           #Mocking to test if all lower cases are returned
+    #Mocking to test if all lower cases are returned
         sys.stdin = StringIO("TriAngLe\n")
         self.assertEqual(get_shape(), "triangle")
 
@@ -80,12 +80,24 @@ class MyTestCase(unittest.TestCase):
             self.assertEqual(mock_stdout.getvalue(), "1 \n2 4 \n3 6 9 \n4 8 12 16 \n5 10 15 20 25 \n6 12 18 24 30 36 \n")
 
 
-    def test_12_pyramid(self):
+    @patch("sys.stdout", new_callable=StringIO)
+    # def test_12_pyramid(self):
+    def test_draw_pyramid(self, mock_stdout):
+        expected_output = "    *\n   ***\n  *****\n"
+        with patch("builtins.input", side_effect=["3"]):
+            draw_pyramid(3)
+            output = mock_stdout.getvalue()
+            self.assertEqual(output, expected_output)
         
-        pass
 
-    def test_13_pyramid(self):
-        
+    # def test_13_pyramid(self):
+    @patch("sys.stdout", new_callable=StringIO)
+    def test_draw_pyramid(self, mock_stdout):
+        expected_output = "    *\n   ***\n  *****\n *******\n*********\n"
+        with patch("builtins.input", side_effect=["5"]):
+            draw_pyramid(5)
+            output = mock_stdout.getvalue()
+            self.assertEqual(output, expected_output)
         pass
 
     def test_14_primes(self):

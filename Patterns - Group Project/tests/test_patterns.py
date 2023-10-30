@@ -169,30 +169,70 @@ class MyTestCase(unittest.TestCase):
         expected_output = "2 \n3 5 \n7 11 13 \n"
         self.assertEqual(output, expected_output)
         
-    def test_tower_of_hanoi_3_disks(self):
-        """
+    def assertValidHanoiMoves(self, n, source, auxiliary, target, moves):
+        expected_moves = 2 ** n - 1
+        self.assertEqual(len(moves), expected_moves)
+
+
+    """
+        *This function tests how the rings move from one pole to the next.
+        it uses an instance of n=1 to check if the poles are ordered from biggest pole to
+        smallest pole. 
+    """    
+    def test_tower_of_hanoi_1(self):
+        n = 1
+        source, auxiliary, target = 'A', 'B', 'C'
+        moves = tower_of_hanoi(n, source, auxiliary, target)
+        self.assertValidHanoiMoves(n, source, auxiliary, target, moves)
+
+
+    """
+        *This function tests how the rings move from one pole to the next.
+        it uses an instance of n=2 to check if the poles are ordered from biggest pole to
+        smallest pole. 
+    """
+    def test_tower_of_hanoi_2(self):
+        n = 2
+        source, auxiliary, target = 'A', 'B', 'C'
+        moves = tower_of_hanoi(n, source, auxiliary, target)
+        self.assertValidHanoiMoves(n, source, auxiliary, target, moves)
+
+
+    """
         *This function tests how the rings move from one pole to the next.
         it uses an instance of n=3 to check if the poles are ordered from biggest pole to
         smallest pole. 
-        """
+    """
+    def test_tower_of_hanoi_3(self):
         n = 3
-        source_peg = "A"
-        auxiliary_peg = "B"
-        target_peg = "C"
+        source, auxiliary, target = 'A', 'B', 'C'
+        moves = tower_of_hanoi(n, source, auxiliary, target)
+        self.assertValidHanoiMoves(n, source, auxiliary, target, moves)
 
-        moves = tower_of_hanoi(n, source_peg, auxiliary_peg, target_peg)
 
-        expected_moves = [
-            ("A", "C"),
-            ("A", "B"),
-            ("C", "B"),
-            ("A", "C"),
-            ("B", "A"),
-            ("B", "C"),
-            ("A", "C"),
-        ]
+    """
+        *This function tests how the rings move from one pole to the next.
+        it uses an instance of n=4 to check if the poles are ordered from biggest pole to
+        smallest pole. 
+    """
+    def test_tower_of_hanoi_4(self):
+        n = 4
+        source, auxiliary, target = 'A', 'B', 'C'
+        moves = tower_of_hanoi(n, source, auxiliary, target)
+        self.assertValidHanoiMoves(n, source, auxiliary, target, moves)
 
-        self.assertEqual(moves, expected_moves) 
+
+    """
+        *This function tests how the rings move from one pole to the next.
+        it uses an instance of n=5 to check if the poles are ordered from biggest pole to
+        smallest pole. 
+    """
+    def test_tower_of_hanoi_5(self):
+        n = 5
+        source, auxiliary, target = 'A', 'B', 'C'
+        moves = tower_of_hanoi(n, source, auxiliary, target)
+        self.assertValidHanoiMoves(n, source, auxiliary, target, moves)
+
         
     
 if __name__ == '__main__':

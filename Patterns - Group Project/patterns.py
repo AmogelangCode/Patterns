@@ -18,8 +18,8 @@ def get_shape():
 
 # TODO: Step 2 - return height from user input (it must be int!)
 #       The maximum possible height must be 80
-def get_height():
-    
+def get_height(): 
+
     while True:
         height = int(input("Height?: "))
 
@@ -39,7 +39,10 @@ def draw_square(height):
 
 
 def draw_triangle_reversed(height):
-    pass
+    for i in range(height):
+        for _ in range(i,height):
+            print(i+1,end=" ")
+        print()
 
 
 def draw_triangle(height):
@@ -47,8 +50,11 @@ def draw_triangle(height):
 
 
 def draw_triangle_multiplication(height):
-    pass
-
+    
+    for i in range(1,height+1):
+        for j in range(1,i+1):
+            print(j*i,end=" ")
+        print()
 
 def draw_pyramid(height):
     pass

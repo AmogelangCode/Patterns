@@ -31,11 +31,33 @@ class MyTestCase(unittest.TestCase):
             get_height()
 
     def test_4_square(self):
-        pass
+        text_capture = StringIO()
+        sys.stdout = text_capture
+        draw_square(4)
+
+        self.assertEqual("""****
+****
+****
+****
+""",text_capture.getvalue())
 
     def test_5_square(self):
-        
-        pass
+
+        text_capture = StringIO()
+        sys.stdout = text_capture
+        draw_square(10)
+
+        self.assertEqual("""**********
+**********
+**********
+**********
+**********
+**********
+**********
+**********
+**********
+**********
+""",text_capture.getvalue())
 
     def test_6_triangle(self):
         """
@@ -99,11 +121,28 @@ class MyTestCase(unittest.TestCase):
 
     def test_12_pyramid(self):
         
-        pass
+        text_capture = StringIO()
+        sys.stdout = text_capture
+        draw_pyramid(3)
+
+        self.assertEqual("""  *
+ ***
+*****
+""",text_capture.getvalue())
 
     def test_13_pyramid(self):
         
-        pass
+        text_capture = StringIO()
+        sys.stdout = text_capture
+        draw_pyramid(5)
+
+        self.assertEqual("""    *
+   ***
+  *****
+ *******
+*********
+""",text_capture.getvalue())
+
 
     def test_14_primes_numbers(self):
         ''' This test test whether our function returns only

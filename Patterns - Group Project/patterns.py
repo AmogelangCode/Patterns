@@ -82,7 +82,12 @@ def draw_triangle_multiplication(height):
 def draw_pyramid(height):
     ''' A function that uses the height to a pyramid shape
     '''
-    pass
+    for i in range(0,height):
+        for j in range(0,height-i-1):
+            print(end=" ")
+        for j in range(0,(2*i+1)):
+            print("*",end="")
+        print()
 
 def is_prime(height):
     if height < 2:

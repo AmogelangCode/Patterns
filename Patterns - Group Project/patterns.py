@@ -39,6 +39,9 @@ def draw_square(height):
 
 
 def draw_triangle_reversed(height):
+    """
+    function that draws a reversed triangle 
+    """
     for i in range(height):
         for _ in range(i,height):
             print(i+1,end=" ")
@@ -51,6 +54,10 @@ def draw_triangle(height):
 
 def draw_triangle_multiplication(height):
     
+    """
+    function that draws a multiplication triangle 
+    """
+
     for i in range(1,height+1):
         for j in range(1,i+1):
             print(j*i,end=" ")

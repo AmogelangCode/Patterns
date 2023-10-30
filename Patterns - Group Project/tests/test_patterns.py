@@ -2,33 +2,33 @@ import unittest
 from io import StringIO
 import sys
 from unittest.mock import patch
-import patterns
+from patterns import *
 
 class MyTestCase(unittest.TestCase):
 
     def test_1_shape(self):
            #Mocking to test if all lower cases are returned
         sys.stdin = StringIO("TriAngLe\n")
-        self.assertEqual(patterns.get_shape(), "triangle")
+        self.assertEqual(get_shape(), "triangle")
 
         sys.stdin = StringIO("SquAre\n")
-        self.assertEqual(patterns.get_shape(), "square")
+        self.assertEqual(get_shape(), "square")
 
         sys.stdin = StringIO("PyRamiD\n")
-        self.assertEqual(patterns.get_shape(), "pyramid")
+        self.assertEqual(get_shape(), "pyramid")
 
     
 
     # Test if get_shape only returns numbers below 80 only
     @patch('builtins.input', side_effect = ["85","70", "100"])
     def test_get_height(self,mock_input):
-        self.assertEqual(patterns.get_height(),70)
+        self.assertEqual(get_height(),70)
 
 
     @patch('builtins.input', side_effect=['abc', 'xyz', '@', '/'])
     def test_get_height(self, mock_input):
         with self.assertRaises(ValueError):
-            patterns.get_height()
+            get_height()
 
     def test_4_square(self):
         pass
@@ -42,7 +42,7 @@ class MyTestCase(unittest.TestCase):
         test for reversed triangle with height 0f 3
         """
         with patch("sys.stdout", StringIO("1 1 1 \n2 2 \n3 \n")) as mock_stdout:
-            patterns.draw_triangle_reversed(3)
+            draw_triangle_reversed(3)
             self.assertEqual(mock_stdout.getvalue(), "1 1 1 \n2 2 \n3 \n")
     
 
@@ -51,7 +51,7 @@ class MyTestCase(unittest.TestCase):
         test for reversed triangle
         """
         with patch("sys.stdout", StringIO("1 1 1 1 1 \n2 2 2 2 \n3 3 3 \n4 4 \n5 ")) as mock_stdout:
-            patterns.draw_triangle_reversed(5)
+            draw_triangle_reversed(5)
             self.assertEqual(mock_stdout.getvalue(), "1 1 1 1 1 \n2 2 2 2 \n3 3 3 \n4 4 \n5 \n")
 
     def test_8_triangle(self):
@@ -66,7 +66,7 @@ class MyTestCase(unittest.TestCase):
         test for an increamenting multiplication triangle 
         """
         with patch("sys.stdout", StringIO("1 \n2 4 \n3 6 9 \n4 8 12 16 \n")) as mock_stdout:
-            patterns.draw_triangle_multiplication(4)
+            draw_triangle_multiplication(4)
             self.assertEqual(mock_stdout.getvalue(), "1 \n2 4 \n3 6 9 \n4 8 12 16 \n")
         
 
@@ -76,7 +76,7 @@ class MyTestCase(unittest.TestCase):
         """
 
         with patch("sys.stdout", StringIO("1 \n2 4 \n3 6 9 \n4 8 12 16 \n5 10 15 20 25 \n6 12 18 24 30 36 \n")) as mock_stdout:
-            patterns.draw_triangle_multiplication(6)
+            draw_triangle_multiplication(6)
             self.assertEqual(mock_stdout.getvalue(), "1 \n2 4 \n3 6 9 \n4 8 12 16 \n5 10 15 20 25 \n6 12 18 24 30 36 \n")
 
 

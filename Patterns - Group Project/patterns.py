@@ -42,7 +42,9 @@ def draw_square(height):
     ''' This function takes the height as an argument to print stars
         in a square shape
     '''
-    pass
+    k = height
+    for i in range (height):
+        print(height*"*")
 
 
 def draw_triangle_reversed(height):
@@ -60,7 +62,10 @@ def draw_triangle(height):
     ''' This function uses the height as an argument to draw a right angled 
         triangle
     '''
-    pass
+    for i in range(1,height+1):
+        for j in range(1,i+1):
+            print(j, end =" ")
+        print()
 
 
 def draw_triangle_multiplication(height):
@@ -112,8 +117,35 @@ def draw_triangle_prime(height):
                 
 # TODO: Step 4 - add support for other shapes
 def draw(shape, height):
+
     if shape == "pyramid":
+
         draw_pyramid(height)
+
+
+    elif shape == "square":
+
+        draw_square(height)
+
+
+    elif shape == "triangle":
+
+        draw_triangle(height)
+
+
+    elif shape == "triangle_multiplication":
+
+        draw_triangle_multiplication(height)
+
+
+    elif shape == "triangle_prime":
+
+        draw_triangle_prime(height)
+
+
+    elif shape == "triangle_reversed":
+
+        draw_triangle_reversed(height)
 
 
 

@@ -56,10 +56,27 @@ class MyTestCase(unittest.TestCase):
 
     def test_8_triangle(self):
         
-        pass
+        text_capture = StringIO()
+        sys.stdout = text_capture
+        draw_triangle(3)
+
+        self.assertEqual("""1 
+1 2 
+1 2 3 
+""",text_capture.getvalue())
     def test_9_triangle(self):
+        text_capture = StringIO()
+        sys.stdout = text_capture
+        draw_triangle(5)
+
+        self.assertEqual("""1 
+1 2 
+1 2 3 
+1 2 3 4 
+1 2 3 4 5 
+""",text_capture.getvalue())
         
-        pass
+    
 
     def test_10_triangle_multiplication(self):
         """

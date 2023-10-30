@@ -1,0 +1,54 @@
+# GROUP PROJECT (PATTERNS)
+
+
+* A group project that works on each individuals skills of drawing patterns and shapes using python.
+* This project also cements the concepts of TDD .
+
+to be continued....
+
+
+
+***Get shape from user***
+
+def get_shape():
+Get input from user to identify desired shape.
+
+***Get height from user***
+        
+def get_height():
+Requires user to input number to get height of the shape.
+
+
+***Draw shape***
+    
+def draw_shape(size):
+Use height and shape values to draw the desired shape.
+
+***Draw prime triangle***
+def is_prime(n):
+Get shape using only prime numbers.
+
+***Solve the Tower of Hanoi***
+def tower_of_hanoi():
+Test how the rings move from one pole to the next.
+Check whether the poles are ordered from biggest pole tosmallest pole.
+
+
+### To Run
+
+* `python3 patterns.py`
+* follow the input prompts to get the desired output
+
+### To Test
+
+* To run all the unittests: `python3 -m unittest tests/test_main.py`
+* To run a specific step's unittest, e.g step *1*: `python3 -m unittest tests.test_main.MyTestCase.test_step1`
+* _Note_: at the minimum, these (*unedited*) tests must succeed before you may submit the solution for review.
+
+
+
+### To Test
+
+* To run all the unittests: `python3 -m unittest tests/test_patterns.py`
+* To run a specific step's unittest, e.g step *1*: `python3 -m unittest tests.test_patterns.MyTestCase.test_1_shape`
+* _Note_: at the minimum, these (*unedited*) tests must succeed before you may submit the solution.
